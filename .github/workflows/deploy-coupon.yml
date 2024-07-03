@@ -37,7 +37,7 @@ jobs:
         echo $message
         curl -X POST https://notify-api.line.me/api/notify \
         -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
-        -F "message=$message" \
+        -F "message=hello world" \
         -F "stickerPackageId=446" \
         -F "stickerId=1993"
 
