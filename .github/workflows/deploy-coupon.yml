@@ -34,7 +34,7 @@ jobs:
         unique_data='${{ steps.crawler.outputs.unique_data }}'
         # 移除開頭和結尾的方括號，然後用換行符替換逗號和引號
         message=$(echo $unique_data | sed 's/^\[//;s/\]$//;s/","/\n/g;s/"//g')
-        echo message
+        echo $message
         curl -X POST https://notify-api.line.me/api/notify \
         -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
         -F "message=$message" \
