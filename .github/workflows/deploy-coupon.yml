@@ -27,19 +27,21 @@ jobs:
         echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
 
     - name: Send LINE Notify
-      if: steps.crawler.outputs.unique_data != '[]'
+      # if: steps.crawler.outputs.unique_data != '[]'
+        #       -F "stickerPackageId=446" \
+        # -F "stickerId=1993"
       env:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
       run: |
         unique_data='${{ steps.crawler.outputs.unique_data }}'
         # 移除開頭和結尾的方括號，然後用換行符替換逗號和引號
         message=$(echo $unique_data | sed 's/^\[//;s/\]$//;s/","/\n/g;s/"//g')
+        echo $unique_data
         echo $message
         curl -X POST https://notify-api.line.me/api/notify \
-        -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
+        -H "Authorization: Bearer $LINE_NOTIFY_TOKEN2" \
         -F "message=hello world" \
-        -F "stickerPackageId=446" \
-        -F "stickerId=1993"
+
 
     - name: Commit and push if changed
       run: |
