@@ -7,7 +7,7 @@ function getLastRecord() {
         console.error('Error reading JSON file:', err);
         resolve([]);
       } else {
-        if (data) {
+        if (typeof data === 'object') {
           const crawledData = JSON.parse(data);
           resolve(crawledData);
         } else {
