@@ -1,15 +1,23 @@
 const fs = require('fs');
 const axios = require('axios');
-function getLastRecord() {
+
+
+/**
+ * 取得紀錄資料
+ *
+ * @returns {Promise<Array>} 一個 Promise,解析為包含記錄數據的數組。
+ *                           如果發生錯誤或數據無效,則解析為空數組。
+ */
+function getRecordData() {
   return new Promise((resolve, reject) => {
     fs.readFile('record.json', 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
         resolve([]);
       } else {
-        if (typeof data === 'object') {
-          const crawledData = JSON.parse(data);
-          resolve(crawledData);
+				const responseData = data && JSON.parse(data) || [];
+        if (!Array.isArray(responseData) && typeof responseData === 'object') {
+          resolve([responseData]);
         } else {
           resolve([]);
         }
@@ -18,6 +26,11 @@ function getLastRecord() {
   });
 }
 
+/**
+ * 寫入紀錄至 record.json
+ *
+ * @param {*} data
+ */
 function writeRecord(data) {
 	const jsonData = JSON.stringify(data, null, 2);
 
@@ -31,15 +44,24 @@ function writeRecord(data) {
 	});
 }
 
+/**
+ * 過濾爬到的資料
+ *
+ * @param {*} data
+ * @return {*} 
+ */
+function getCrawlerData(data) {
+	return data
+	.filter(x => x.Status === 'verified' && Number(x.Score) >= 0)
+	.map(({Label, Sw_Coupon__, Score}) => { return { Label, Sw_Coupon__, Score}});
+}
+
 axios.get('https://swq.jp/_special/rest/Sw/Coupon')
   .then(async response => {
 		const data = response.data?.data;
 		if(data) {
-			const lastRecord = await getLastRecord();
-
-			const result = data
-				.filter(x => x.Status === 'verified')
-				.map(({Label, Sw_Coupon__}) => { return { Label, Sw_Coupon__ }});
+			const lastRecord = await getRecordData();
+			const result = getCrawlerData(data);
 
 			const lastDataIndex = lastRecord.length
 				? result.findIndex(item => item.Label === lastRecord[0].Label)
@@ -48,7 +70,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 			const uniqueData = lastDataIndex === -1
 				? result
 				: result.slice(0, lastDataIndex);
-
+	
 			if(uniqueData.length) {
 				writeRecord(uniqueData[0]);
 
