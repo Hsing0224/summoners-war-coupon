@@ -16,11 +16,7 @@ function getRecordData() {
         resolve([]);
       } else {
 				const responseData = data && JSON.parse(data) || [];
-        if (!Array.isArray(responseData) && typeof responseData === 'object') {
-          resolve([responseData]);
-        } else {
-          resolve([]);
-        }
+				resolve(responseData);
       }
     });
   });
@@ -60,11 +56,11 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
   .then(async response => {
 		const data = response.data?.data;
 		if(data) {
-			const lastRecord = await getRecordData();
+			const recordData = await getRecordData();
 			const result = getCrawlerData(data);
 
-			const lastDataIndex = lastRecord.length
-				? result.findIndex(item => item.Label === lastRecord[0].Label)
+			const lastDataIndex = recordData.length
+				? result.findIndex(item => item.Label === recordData[0].Label)
 				: -1;
 
 			const uniqueData = lastDataIndex === -1
@@ -72,7 +68,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 				: result.slice(0, lastDataIndex);
 	
 			if(uniqueData.length) {
-				writeRecord(uniqueData[0]);
+				writeRecord(uniqueData);
 
 				const outputLinkArray = uniqueData.map((x) => `http://withhive.me/313/${x.Label}`);
 				// 輸出到控制台，GitHub Actions 可以捕獲這個輸出
