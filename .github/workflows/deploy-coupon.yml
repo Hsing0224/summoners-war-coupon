@@ -48,9 +48,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add record.json
-        git diff --quiet && git diff --staged --quiet || (
-          git fetch origin
-          git pull --rebase origin ${{ github.ref }}
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
           git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
+          git fetch origin
+          git rebase origin/${{ github.ref }}
           git push
-        )
+        fi
