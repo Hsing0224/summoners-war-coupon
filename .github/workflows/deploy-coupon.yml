@@ -42,7 +42,6 @@ jobs:
         -F "stickerPackageId=446" \
         -F "stickerId=1993"
 
-
     - name: Commit and push if changed
       run: |
         git config --local user.email "action@github.com"
@@ -53,6 +52,6 @@ jobs:
         else
           git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
           git fetch origin
-          git rebase origin/${{ github.ref }}
+          git rebase origin/main  # 將分支明確指定為 main
           git push
         fi
