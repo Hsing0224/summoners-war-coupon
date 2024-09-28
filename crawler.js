@@ -108,6 +108,9 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 				? result
 				: result.slice(0, lastDataIndex);
 
+			console.log("🚀 -----------------------------------------🚀")
+			console.log("🚀 ~ uniqueData.length:", uniqueData.length)
+			console.log("🚀 -----------------------------------------🚀")
 			if (uniqueData.length) {
 				// 寫入整合資料的第一筆作為下次索引用
 				writeRecord([uniqueData[0]]);
