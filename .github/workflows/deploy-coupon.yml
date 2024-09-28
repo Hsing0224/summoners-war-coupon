@@ -51,7 +51,6 @@ jobs:
           echo "No changes to commit"
         else
           git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
-          git fetch origin
-          git rebase origin/main  # 將分支明確指定為 main
-          git push
+          git pull origin main --rebase  # 使用 pull --rebase 確保同步最新的提交
+          git push origin main
         fi
