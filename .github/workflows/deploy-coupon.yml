@@ -28,14 +28,15 @@ jobs:
         echo "$output"
         unique_data=$(echo "$output" | grep "UNIQUE_DATA:" | sed 's/UNIQUE_DATA://g')
         echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
+        
 
     - name: Send LINE Notify
       if: steps.crawler.outputs.unique_data != '[]'
       env:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
       run: |
-        # 將 UNIQUE_DATA 轉換為 JSON 格式，然後解析為每個項目一行
-        message=$(echo "${{ steps.crawler.outputs.unique_data }}" | jq -r '.[]' | sed 's/\\&/\\\\&/g')
+        # 將 JSON 格式的字串中的 "," 替換為換行符號，並移除前後的中括號
+        message=$(echo "${{ steps.crawler.outputs.unique_data }}" | sed 's/,/\\n/g' | sed 's/^\[//; s/\]$//')
         curl -X POST https://notify-api.line.me/api/notify \
         -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
         -F "message=$message" \
