@@ -9,15 +9,15 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Use Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '20'  # 或者你需要的 Node.js 版本
     
     - name: Install dependencies
-      run: npm install
+      run: npm ci
     
     - name: Run crawler
       id: crawler  # 設置 ID，以便在後續步驟中引用
