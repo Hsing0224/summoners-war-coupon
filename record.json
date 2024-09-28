@@ -1,2 +1,15 @@
 [
+  {
+    "Label": "cuatamcup1012",
+    "Resource": [
+      {
+        "Quantity": "200000",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "5",
+        "Code": "scroll_mystical"
+      }
+    ]
+  }
 ]
