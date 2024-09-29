@@ -34,13 +34,16 @@ jobs:
       env:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
       run: |
-        # 將 JSON 格式的字串中的 "," 替換為換行符號，並移除前後的中括號
-        message=$(echo "${{ steps.crawler.outputs.unique_data }}" | sed 's/UNIQUE_DATA:\[//; s/\]$//' | sed 's/","/\n/g' | sed 's/^"//; s/"$//' | sed 's/ \* /:/')
-        curl -X POST https://notify-api.line.me/api/notify \
-        -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
-        -F "message=$message" \
-        -F "stickerPackageId=446" \
-        -F "stickerId=1993"
+        # 移除開頭的 UNIQUE_DATA:[ 和結尾的 ]，然後將每個項目分割成獨立的行
+        message=$(echo "${{ steps.crawler.outputs.unique_data }}" | sed 's/^UNIQUE_DATA:\[//; s/\]$//' | sed 's/","/\n/g' | sed 's/^"//; s/"$//' | sed 's/：/:/')
+        
+        # 使用 while 循環逐行發送消息
+        echo "$message" | while IFS= read -r line; do
+          curl -X POST https://notify-api.line.me/api/notify \
+          -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
+          -F "message=$line" \
+          -F "stickerPackageId=446" \
+          -F "stickerId=1993"
 
     - name: Commit and push if changed
       run: |

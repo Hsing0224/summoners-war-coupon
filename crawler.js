@@ -110,11 +110,11 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 
 			if (uniqueData.length) {
 				// 寫入整合資料的第一筆作為下次索引用
-				// writeRecord([uniqueData[0]]);
+				writeRecord([uniqueData[0]]);
 
 				const outputLinkArray = uniqueData.map((x) => {
 					const link = `http://withhive.me/313/${x.Label}`;
-					const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}:${item.Quantity}`);
+					const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
 					return `${link} ： ${items.join('、')}`;
 				}
 				);
