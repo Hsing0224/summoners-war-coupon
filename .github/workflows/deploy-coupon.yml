@@ -34,8 +34,8 @@ jobs:
       env:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
       run: |
-        # 移除開頭的 UNIQUE_DATA:[ 和結尾的 ]，然後將每個項目之間添加換行符
-        message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^UNIQUE_DATA:\[//; s/\]$//' | sed 's/","/\n/g' | sed 's/^"//; s/"$//' | sed 's/：/:/')
+        # 將開頭的 UNIQUE_DATA:[" 替換為換行符號，並將結尾的 "] 移除，最後將字串中的 "," 替換為換行符號
+        message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^UNIQUE_DATA:\["/\n/; s/"\]$//; s/","/\n/g')
         
         # 一次性發送所有消息
         curl -X POST https://notify-api.line.me/api/notify \
