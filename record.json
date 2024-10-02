@@ -1,14 +1,26 @@
 [
   {
-    "Label": "cuatamcup1012",
+    "Label": "aufnachjapan24",
     "Resource": [
       {
-        "Quantity": "200000",
-        "Code": "mana"
+        "Quantity": "1",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "3",
+        "Code": "summon_exclusive"
+      },
+      {
+        "Quantity": "4",
+        "Code": "crystal"
+      },
+      {
+        "Quantity": "3",
+        "Code": "scroll_water"
       },
       {
         "Quantity": "5",
-        "Code": "scroll_mystical"
+        "Code": "scroll_fire"
       }
     ]
   }
