@@ -1,26 +1,10 @@
 [
   {
-    "Label": "aufnachjapan24",
+    "Label": "sw2024octm6b",
     "Resource": [
       {
         "Quantity": "1",
-        "Code": "energy"
-      },
-      {
-        "Quantity": "3",
-        "Code": "summon_exclusive"
-      },
-      {
-        "Quantity": "4",
-        "Code": "crystal"
-      },
-      {
-        "Quantity": "3",
-        "Code": "scroll_water"
-      },
-      {
-        "Quantity": "5",
-        "Code": "scroll_fire"
+        "Code": "scroll_mystical"
       }
     ]
   }
