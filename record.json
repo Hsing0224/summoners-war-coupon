@@ -1,10 +1,10 @@
 [
   {
-    "Label": "nextapaccup26oct",
+    "Label": "prizovnik",
     "Resource": [
       {
         "Quantity": "1",
-        "Code": "scroll_fire"
+        "Code": "energy"
       }
     ]
   }
