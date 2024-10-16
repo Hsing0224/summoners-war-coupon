@@ -30,7 +30,7 @@ jobs:
         echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
 
     - name: Send LINE Notify
-      if: ${{ steps.crawler.outputs.unique_data != 'UNIQUE_DATA:' }}
+      if: ${{ steps.crawler.outputs.unique_data != '' }}
 
       env:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
