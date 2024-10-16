@@ -115,11 +115,11 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 				const outputLinkArray = uniqueData.map((x) => {
 					const link = `http://withhive.me/313/${x.Label}`;
 					const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
-					return `${link}\n${items.join('、')}`;
+					return `${link}<br />${items.join('、')}`;
 				}
 				);
 
-				const output = `UNIQUE_DATA:\n\n${outputLinkArray.join('\n')}`;
+				const output = `UNIQUE_DATA:<br /><br />${outputLinkArray.join('<br />')}`;
 
 				// 輸出到控制台，GitHub Actions 可以捕獲這個輸出
 				console.log(output);
