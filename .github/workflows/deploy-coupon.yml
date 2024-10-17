@@ -2,58 +2,59 @@ name: Deploy to LINE Notify and Update Record
 
 on:
   schedule:
-    - cron: '0 12 * * 3,6,0' # UTC時間12:00，對應東八區20:00，每週三、六、日執行
-  workflow_dispatch:  # 允許手動觸發
+    - cron: "0 12 * * 3,6,0" # UTC時間12:00，對應東八區20:00，每週三、六、日執行
+  workflow_dispatch: # 允許手動觸發
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # 獲取所有歷史記錄，以便進行合併
-    
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'  # 或者你需要的 Node.js 版本
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Run crawler
-      id: crawler  # 設置 ID，以便在後續步驟中引用
-      run: |
-        output=$(node crawler.js)
-        echo "$output"
-        unique_data=$(echo "$output" | grep "UNIQUE_DATA:" | sed 's/UNIQUE_DATA://g')
-        echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 獲取所有歷史記錄，以便進行合併
 
-    - name: Send LINE Notify
-      if: ${{ steps.crawler.outputs.unique_data != '' }}
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # 或者你需要的 Node.js 版本
 
-      env:
-        LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
-      run: |
-        message="${{ steps.crawler.outputs.unique_data }}"
-        # 將 <br /> 替換成 \n
-        message=$(echo "$message" | sed 's/<br \/>/\\n/g')
-        # 一次性發送所有消息
-        curl -X POST https://notify-api.line.me/api/notify \
-        -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
-        -F "message=$message" \
-        -F "stickerPackageId=446" \
-        -F "stickerId=1993"
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Commit and push if changed
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add record.json
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
-          git pull origin main --rebase  # 使用 pull --rebase 確保同步最新的提交
-          git push origin main
-        fi
+      - name: Run crawler
+        id: crawler # 設置 ID，以便在後續步驟中引用
+        run: |
+          output=$(node crawler.js)
+          echo "$output"
+          unique_data=$(echo "$output" | grep "UNIQUE_DATA:" | sed 's/UNIQUE_DATA://g')
+          echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
+
+      - name: Send LINE Notify
+        if: ${{ steps.crawler.outputs.unique_data != '[]' }}
+
+        env:
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: |
+          echo '${{ steps.crawler.outputs.unique_data }}'
+          echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^UNIQUE_DATA:\["/\n/; s/"\]$//; s/","/\n/g'
+          message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^UNIQUE_DATA:\["/\n/; s/"\]$//; s/","/\n/g')
+
+          # 一次性發送所有消息
+          # curl -X POST https://notify-api.line.me/api/notify \
+          # -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
+          # -F "message=$message" \
+          # -F "stickerPackageId=446" \
+          # -F "stickerId=1993"
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add record.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
+            git pull origin main --rebase  # 使用 pull --rebase 確保同步最新的提交
+            git push origin main
+          fi
