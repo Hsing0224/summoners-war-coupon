@@ -36,9 +36,8 @@ jobs:
         LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
       run: |
         message="${{ steps.crawler.outputs.unique_data }}"
-        # 將 &lt;br /&gt; 替換成 \n
-        message=$(echo "$message" | sed 's/&lt;br /&gt;/\\n/g')
-        
+        # 將 <br /> 替換成 \n
+        message=$(echo "$message" | sed 's/<br \/>/\\n/g')
         # 一次性發送所有消息
         curl -X POST https://notify-api.line.me/api/notify \
         -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
