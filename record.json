@@ -1,17 +1,9 @@
 [
   {
-    "Label": "ep3liveonnov07",
+    "Label": "swsaxbasharkkf3i9",
     "Resource": [
       {
-        "Quantity": "100",
-        "Code": "energy"
-      },
-      {
-        "Quantity": "200000",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "2",
+        "Quantity": "5",
         "Code": "scroll_mystical"
       }
     ]
