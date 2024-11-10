@@ -38,6 +38,8 @@ jobs:
 
           message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/(?<!:):(?!:)/\n/g')
 
+          message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/：/\n/g')
+
           # 一次性發送所有消息
           curl -X POST https://notify-api.line.me/api/notify \
           -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
