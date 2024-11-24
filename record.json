@@ -1,10 +1,14 @@
 [
   {
-    "Label": "sarabaswc2024",
+    "Label": "letsg0skyf3v3r",
     "Resource": [
       {
-        "Quantity": "1",
-        "Code": "rune"
+        "Quantity": "300000",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "3",
+        "Code": "scroll_mystical"
       }
     ]
   }
