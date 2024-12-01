@@ -1,7 +1,15 @@
 [
   {
-    "Label": "swc24saisyukessen",
+    "Label": "sw2024decs9q",
     "Resource": [
+      {
+        "Quantity": "100",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "10",
+        "Code": "mana"
+      },
       {
         "Quantity": "1",
         "Code": "scroll_mystical"
