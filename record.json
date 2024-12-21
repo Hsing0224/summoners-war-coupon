@@ -1,17 +1,13 @@
 [
   {
-    "Label": "sw2024decs9q",
+    "Label": "goodby3lt2024",
     "Resource": [
       {
         "Quantity": "100",
         "Code": "energy"
       },
       {
-        "Quantity": "10",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "1",
+        "Quantity": "5",
         "Code": "scroll_mystical"
       }
     ]
