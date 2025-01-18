@@ -1,9 +1,13 @@
 [
   {
-    "Label": "swxdshappy25",
+    "Label": "allthebestin2025",
     "Resource": [
       {
-        "Quantity": "3",
+        "Quantity": "200000",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "20",
         "Code": "scroll_mystical"
       }
     ]
