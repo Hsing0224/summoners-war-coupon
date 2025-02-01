@@ -1,10 +1,18 @@
 [
   {
-    "Label": "swxdshappy25",
+    "Label": "sw2025feb3d9",
     "Resource": [
       {
-        "Quantity": "3",
-        "Code": "scroll_mystical"
+        "Quantity": "1",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "1",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "1",
+        "Code": "crystal"
       }
     ]
   }
