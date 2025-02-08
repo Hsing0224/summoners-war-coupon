@@ -1,18 +1,14 @@
 [
   {
-    "Label": "sw2025feb3d9",
+    "Label": "nextmar8tokyo",
     "Resource": [
       {
-        "Quantity": "1",
+        "Quantity": "100",
         "Code": "energy"
       },
       {
-        "Quantity": "1",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "1",
-        "Code": "crystal"
+        "Quantity": "3",
+        "Code": "scroll_mystical"
       }
     ]
   }
