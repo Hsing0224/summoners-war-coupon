@@ -1,18 +1,10 @@
 [
   {
-    "Label": "sw2025feb3d9",
+    "Label": "2025ghlskaishi",
     "Resource": [
       {
         "Quantity": "1",
         "Code": "energy"
-      },
-      {
-        "Quantity": "1",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "1",
-        "Code": "crystal"
       }
     ]
   }
