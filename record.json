@@ -1,18 +1,10 @@
 [
   {
-    "Label": "sw2025feb3d9",
+    "Label": "thx4enjdscollab",
     "Resource": [
       {
-        "Quantity": "1",
-        "Code": "energy"
-      },
-      {
-        "Quantity": "1",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "1",
-        "Code": "crystal"
+        "Quantity": "10",
+        "Code": "scroll_mystical"
       }
     ]
   }
