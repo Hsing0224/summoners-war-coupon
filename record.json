@@ -1,10 +1,14 @@
 [
   {
-    "Label": "thx4enjdscollab",
+    "Label": "dsonskyisland",
     "Resource": [
       {
-        "Quantity": "10",
-        "Code": "scroll_mystical"
+        "Quantity": "100",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "100000",
+        "Code": "mana"
       }
     ]
   }
