@@ -1,14 +1,10 @@
 [
   {
-    "Label": "dsonskyisland",
+    "Label": "seeu1n26aga1n",
     "Resource": [
       {
-        "Quantity": "100",
-        "Code": "energy"
-      },
-      {
-        "Quantity": "100000",
-        "Code": "mana"
+        "Quantity": "5",
+        "Code": "scroll_mystical"
       }
     ]
   }
