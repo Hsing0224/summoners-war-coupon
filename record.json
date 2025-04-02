@@ -1,14 +1,14 @@
 [
   {
-    "Label": "champ32b0rn",
+    "Label": "sw2025apr8c4",
     "Resource": [
       {
-        "Quantity": "200000",
+        "Quantity": "300000",
         "Code": "mana"
       },
       {
         "Quantity": "3",
-        "Code": "scroll_mystical"
+        "Code": "scroll_wind"
       }
     ]
   }
