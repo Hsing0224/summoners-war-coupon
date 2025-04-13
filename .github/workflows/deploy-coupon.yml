@@ -29,21 +29,26 @@ jobs:
           unique_data=$(echo "$output" | grep "UNIQUE_DATA:" | sed 's/UNIQUE_DATA://g')
           echo "unique_data=$unique_data" >> $GITHUB_OUTPUT
 
-      - name: Send LINE Notify
+      - name: Send LINE Message via Messaging API
         if: ${{ steps.crawler.outputs.unique_data != '[]' }}
-
         env:
-          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+          # --- 新增：從 Secrets 取得 LINE Messaging API 的權杖和目標 ID ---
+          # --- New: Get LINE Messaging API Token and Target ID from Secrets ---
+          LINE_MESSAGING_API_TOKEN: ${{ secrets.LINE_MESSAGING_API_TOKEN }} # 替換成你的 Messaging API Channel Access Token Secret 名稱 (Replace with your Messaging API Channel Access Token Secret name)
+          LINE_TARGET_ID: 'U96b585bc99b4d593d532f0b042eb9110'          # 替換成你的目標 User/Group/Room ID Secret 名稱 (Replace with your target User/Group/Room ID Secret name)
+          # --- Pass the data from the previous step ---
+          UNIQUE_DATA: ${{ steps.crawler.outputs.unique_data }}
         run: |
-
-          message=$(echo '${{ steps.crawler.outputs.unique_data }}' | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/：/\n/g')
-
-          # 一次性發送所有消息
-          curl -X POST https://notify-api.line.me/api/notify \
-          -H "Authorization: Bearer $LINE_NOTIFY_TOKEN" \
-          -F "message=$message" \
-          -F "stickerPackageId=446" \
-          -F "stickerId=1993"
+          # 1. 格式化訊息文字 (Format the message text)
+          #    使用與之前相同的 sed 邏輯來建立純文字訊息
+          #    (Use the same sed logic as before to create the plain text message)
+          message_text=$(echo "$UNIQUE_DATA" | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/：/\n/g')
+  
+          # 檢查格式化後的訊息是否為空 (Optional check if formatted message is empty)
+          if [ -z "$message_text" ]; then
+            echo "Formatted message is empty. Skipping sending."
+            exit 0
+          fi
 
       - name: Commit and push if changed
         run: |
