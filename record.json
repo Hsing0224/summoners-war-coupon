@@ -1,3 +1,11 @@
 [
-  
+  {
+    "Label": "swelthanks",
+    "Resource": [
+      {
+        "Quantity": "99",
+        "Code": "scroll_mystical"
+      }
+    ]
+  }
 ]
