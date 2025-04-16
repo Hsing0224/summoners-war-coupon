@@ -1,9 +1,13 @@
 [
   {
-    "Label": "swelthanks",
+    "Label": "sw11yabdaygift",
     "Resource": [
       {
-        "Quantity": "99",
+        "Quantity": "5000000",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "30",
         "Code": "scroll_mystical"
       }
     ]
