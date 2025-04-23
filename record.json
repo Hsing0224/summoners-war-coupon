@@ -1,14 +1,22 @@
 [
   {
-    "Label": "sw11yabdaygift",
+    "Label": "ty4sw11th",
     "Resource": [
       {
-        "Quantity": "5000000",
+        "Quantity": "300",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "2000000",
         "Code": "mana"
       },
       {
-        "Quantity": "30",
+        "Quantity": "5",
         "Code": "scroll_mystical"
+      },
+      {
+        "Quantity": "500",
+        "Code": "rune"
       }
     ]
   }
