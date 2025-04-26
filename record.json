@@ -1,22 +1,10 @@
 [
   {
-    "Label": "ty4sw11th",
+    "Label": "again11tyu",
     "Resource": [
-      {
-        "Quantity": "300",
-        "Code": "energy"
-      },
-      {
-        "Quantity": "2000000",
-        "Code": "mana"
-      },
       {
         "Quantity": "5",
         "Code": "scroll_mystical"
-      },
-      {
-        "Quantity": "500",
-        "Code": "rune"
       }
     ]
   }
