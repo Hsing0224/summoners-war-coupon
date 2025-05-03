@@ -1,7 +1,11 @@
 [
   {
-    "Label": "again11tyu",
+    "Label": "swc2025willrock",
     "Resource": [
+      {
+        "Quantity": "100",
+        "Code": "energy"
+      },
       {
         "Quantity": "5",
         "Code": "scroll_mystical"
