@@ -1,10 +1,10 @@
 [
   {
-    "Label": "swc2025willrock",
+    "Label": "thesummitfinal",
     "Resource": [
       {
-        "Quantity": "100",
-        "Code": "energy"
+        "Quantity": "200000",
+        "Code": "mana"
       },
       {
         "Quantity": "5",
