@@ -1,14 +1,14 @@
 [
   {
-    "Label": "thesummitfinal",
+    "Label": "sw2025maya5q",
     "Resource": [
       {
-        "Quantity": "200000",
-        "Code": "mana"
+        "Quantity": "100",
+        "Code": "energy"
       },
       {
-        "Quantity": "5",
-        "Code": "scroll_mystical"
+        "Quantity": "3",
+        "Code": "summon_exclusive"
       }
     ]
   }
