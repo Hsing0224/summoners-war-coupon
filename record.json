@@ -1,14 +1,14 @@
 [
   {
-    "Label": "sw2025maya5q",
+    "Label": "leaguegroupa",
     "Resource": [
       {
         "Quantity": "100",
         "Code": "energy"
       },
       {
-        "Quantity": "3",
-        "Code": "summon_exclusive"
+        "Quantity": "1",
+        "Code": "scroll_mystical"
       }
     ]
   }
