@@ -35,7 +35,7 @@ jobs:
           # --- 新增：從 Secrets 取得 LINE Messaging API 的權杖和目標 ID ---
           # --- New: Get LINE Messaging API Token and Target ID from Secrets ---
           LINE_MESSAGING_API_TOKEN: ${{ secrets.LINE_MESSAGING_API_TOKEN }} # 替換成你的 Messaging API Channel Access Token Secret 名稱 (Replace with your Messaging API Channel Access Token Secret name)
-          LINE_TARGET_ID: 'U96b585bc99b4d593d532f0b042eb9110'          # 替換成你的目標 User/Group/Room ID Secret 名稱 (Replace with your target User/Group/Room ID Secret name)
+          LINE_TARGET_ID: ${{ secrets.LINE_TARGET_ID }}          # 替換成你的目標 User/Group/Room ID Secret 名稱 (Replace with your target User/Group/Room ID Secret name)
           # --- Pass the data from the previous step ---
           UNIQUE_DATA: ${{ steps.crawler.outputs.unique_data }}
         run: |
@@ -49,6 +49,33 @@ jobs:
             echo "Formatted message is empty. Skipping sending."
             exit 0
           fi
+
+          # 2. 準備 JSON Payload (Prepare JSON Payload)
+          #    使用 shell 變數建構 JSON 字串
+          #    注意變數的引用方式以確保正確解析
+          json_payload='{
+            "to": "'"${LINE_TARGET_ID}"'",
+            "messages": [
+              {
+                "type": "text",
+                "text": "'"${message_text}"'"
+              }
+            ]
+          }'
+
+          # 3. 發送 HTTP POST 請求到 LINE Messaging API (Send HTTP POST request to LINE Messaging API)
+          #    使用 curl 指令，並設定 Header 和 Body
+          #    -X POST 指定方法為 POST
+          #    -H 設定 Header，使用 Secrets 取得的 Token
+          #    -d 設定 Body，傳入準備好的 JSON 字串
+          #    -w "\nHTTP Status: %{http_code}\n" 用於在 Log 中顯示 HTTP 回應狀態碼
+          #    -o /dev/null 避免將回應內容印到 Log 中
+          curl -X POST https://api.line.me/v2/bot/message/push \
+            -H "Authorization: Bearer $LINE_MESSAGING_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$json_payload" \
+            -w "\nHTTP Status: %{http_code}\n" \
+            -o /dev/null
 
       - name: Commit and push if changed
         run: |
