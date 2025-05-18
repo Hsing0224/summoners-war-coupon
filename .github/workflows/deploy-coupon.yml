@@ -35,7 +35,7 @@ jobs:
           # --- 新增：從 Secrets 取得 LINE Messaging API 的權杖和目標 ID ---
           # --- New: Get LINE Messaging API Token and Target ID from Secrets ---
           LINE_MESSAGING_API_TOKEN: ${{ secrets.LINE_MESSAGING_API_TOKEN }} # 替換成你的 Messaging API Channel Access Token Secret 名稱 (Replace with your Messaging API Channel Access Token Secret name)
-          LINE_TARGET_ID: ${{ secrets.LINE_TARGET_ID }}          # 替換成你的目標 User/Group/Room ID Secret 名稱 (Replace with your target User/Group/Room ID Secret name)
+          LINE_TARGET_ID: ${{ secrets.LINE_TARGET_ID }} # 替換成你的目標 User/Group/Room ID Secret 名稱 (Replace with your target User/Group/Room ID Secret name)
           # --- Pass the data from the previous step ---
           UNIQUE_DATA: ${{ steps.crawler.outputs.unique_data }}
         run: |
@@ -43,7 +43,7 @@ jobs:
           #    使用與之前相同的 sed 邏輯來建立純文字訊息
           #    (Use the same sed logic as before to create the plain text message)
           message_text=$(echo "$UNIQUE_DATA" | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/：/\n/g')
-  
+
           # 檢查格式化後的訊息是否為空 (Optional check if formatted message is empty)
           if [ -z "$message_text" ]; then
             echo "Formatted message is empty. Skipping sending."
@@ -53,12 +53,14 @@ jobs:
           # 2. 準備 JSON Payload (Prepare JSON Payload)
           #    使用 shell 變數建構 JSON 字串
           #    注意變數的引用方式以確保正確解析
+          echo "Sending message: $message_text"
+          echo "text": "'"${message_text}"'"
           json_payload='{
             "to": "'"${LINE_TARGET_ID}"'",
             "messages": [
               {
                 "type": "text",
-                "text": "'"${message_text}"'"
+                "text": "test"
               }
             ]
           }'
@@ -74,8 +76,6 @@ jobs:
             -H "Authorization: Bearer $LINE_MESSAGING_API_TOKEN" \
             -H "Content-Type: application/json" \
             -d "$json_payload" \
-            -w "\nHTTP Status: %{http_code}\n" \
-            -o /dev/null
 
       - name: Commit and push if changed
         run: |
