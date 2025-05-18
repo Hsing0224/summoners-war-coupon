@@ -60,7 +60,7 @@ jobs:
             "messages": [
               {
                 "type": "text",
-                "text": "test"
+                "text": "'"${message_text}"'",
               }
             ]
           }'
