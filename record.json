@@ -1,9 +1,13 @@
 [
   {
-    "Label": "rushxswsa",
+    "Label": "plfinals24may",
     "Resource": [
       {
-        "Quantity": "5",
+        "Quantity": "100000",
+        "Code": "mana"
+      },
+      {
+        "Quantity": "2",
         "Code": "scroll_mystical"
       }
     ]
