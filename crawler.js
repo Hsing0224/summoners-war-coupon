@@ -117,10 +117,18 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
           const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
           return `${link}：${items.join('、')}`;
         });
-        console.log('UNIQUE_DATA:' + JSON.stringify(outputLinkArray))
+
+        // 給 LINE Message API 使用的格式
+        const messages = [
+          {
+            type: 'text',
+            text: `${outputLinkArray.join('\n')}`
+          }
+        ]
+        console.log('UNIQUE_DATA:' + JSON.stringify(messages))
 
         // 輸出到控制台，GitHub Actions 可以捕獲這個輸出
-        console.log(output);
+        // console.log(output);
       } else {
         console.log('UNIQUE_DATA:[]');
       }
