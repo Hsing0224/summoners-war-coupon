@@ -119,14 +119,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
           return link;
         });
 
-        // 給 LINE Message API 使用的格式
-        const messages = [
-          {
-            type: 'text',
-            text: `${outputLinkArray.join(' ')}`
-          }
-        ]
-        console.log('UNIQUE_DATA:' + outputLinkArray.join(' '))
+        console.log('UNIQUE_DATA:' + outputLinkArray.join('\n'))
 
         // 輸出到控制台，GitHub Actions 可以捕獲這個輸出
         // console.log(output);
