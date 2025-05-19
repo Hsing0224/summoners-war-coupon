@@ -123,7 +123,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
         const messages = [
           {
             type: 'text',
-            text: `${outputLinkArray.join('\n')}`
+            text: `${outputLinkArray.join(' ')}`
           }
         ]
         console.log('UNIQUE_DATA:' + JSON.stringify(messages))
