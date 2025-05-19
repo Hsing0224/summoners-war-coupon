@@ -77,15 +77,15 @@ jobs:
             -w "\nHTTP Status: %{http_code}\n" \
             -o /dev/null
 
-      - name: Commit and push if changed
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add record.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
-            git pull origin main --rebase  # 使用 pull --rebase 確保同步最新的提交
-            git push origin main
-          fi
+      # - name: Commit and push if changed
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add record.json
+      #     if git diff --staged --quiet; then
+      #       echo "No changes to commit"
+      #     else
+      #       git commit -m "Update record.json on $(date +'%Y-%m-%d %H:%M:%S %Z')"
+      #       git pull origin main --rebase  # 使用 pull --rebase 確保同步最新的提交
+      #       git push origin main
+      #     fi
