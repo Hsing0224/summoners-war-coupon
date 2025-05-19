@@ -55,7 +55,7 @@ jobs:
           #    注意變數的引用方式以確保正確解析
           json_payload='{
             "to": "'"${LINE_TARGET_ID}"'",
-            "messages": $message_text
+            "messages": "'"${message_text}"'"
           }'
 
           echo $json_payload

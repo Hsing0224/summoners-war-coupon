@@ -126,7 +126,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
             text: `${outputLinkArray.join(' ')}`
           }
         ]
-        console.log('UNIQUE_DATA:' + JSON.stringify(messages))
+        console.log('UNIQUE_DATA:' + outputLinkArray.join(' '))
 
         // 輸出到控制台，GitHub Actions 可以捕獲這個輸出
         // console.log(output);
