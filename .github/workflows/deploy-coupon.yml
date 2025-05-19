@@ -43,7 +43,7 @@ jobs:
           #    使用與之前相同的 sed 邏輯來建立純文字訊息
           #    (Use the same sed logic as before to create the plain text message)
           message_text=$(echo "$UNIQUE_DATA")
-          echo "Message text: $message_text"
+          echo "Message: $message_text"
           # 檢查格式化後的訊息是否為空 (Optional check if formatted message is empty)
           if [ -z "$message_text" ]; then
             echo "Formatted message is empty. Skipping sending."
@@ -55,12 +55,7 @@ jobs:
           #    注意變數的引用方式以確保正確解析
           json_payload='{
             "to": "'"${LINE_TARGET_ID}"'",
-            "messages": [
-              {
-                "type": "text",
-                "text": "'"${message_text}"'"
-              }
-            ]
+            "messages": $message_text
           }'
 
           echo $json_payload
