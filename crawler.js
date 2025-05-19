@@ -114,8 +114,9 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
 
         const outputLinkArray = uniqueData.map((x) => {
           const link = `http://withhive.me/313/${x.Label}`;
-          const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
-          return `${link}：${items.join('、')}`;
+          // const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
+          // return `${link}：${items.join('、')}`;
+          return link;
         });
 
         // 給 LINE Message API 使用的格式
