@@ -74,8 +74,6 @@ jobs:
             -H "Authorization: Bearer $LINE_MESSAGING_API_TOKEN" \
             -H "Content-Type: application/json" \
             -d "$json_payload" \
-            -w "\nHTTP Status: %{http_code}\n" \
-            -o /dev/null
 
       # - name: Commit and push if changed
       #   run: |
