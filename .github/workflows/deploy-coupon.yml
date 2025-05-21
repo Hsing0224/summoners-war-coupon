@@ -42,8 +42,8 @@ jobs:
           # 1. 格式化訊息文字 (Format the message text)
           #    使用與之前相同的 sed 邏輯來建立純文字訊息
           #    (Use the same sed logic as before to create the plain text message)
-          message_text=$(echo "$UNIQUE_DATA" | sed 's/^\["/👍\n\n/; s/"\]$//; s/","/\n/g; s/：/\n/g')
-
+          message_text=$(echo "$UNIQUE_DATA")
+          echo "Message: $message_text"
           # 檢查格式化後的訊息是否為空 (Optional check if formatted message is empty)
           if [ -z "$message_text" ]; then
             echo "Formatted message is empty. Skipping sending."
@@ -64,6 +64,8 @@ jobs:
               }
             ]
           }'
+
+          echo $json_payload
 
           # 3. 發送 HTTP POST 請求到 LINE Messaging API (Send HTTP POST request to LINE Messaging API)
           #    使用 curl 指令，並設定 Header 和 Body
