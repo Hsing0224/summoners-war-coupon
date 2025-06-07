@@ -119,7 +119,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
           return link;
         });
 
-        console.log('UNIQUE_DATA:' + outputLinkArray.join('\n'))
+        console.log('UNIQUE_DATA:' + outputLinkArray.join(' '))
 
         // 輸出到控制台，GitHub Actions 可以捕獲這個輸出
         // console.log(output);
