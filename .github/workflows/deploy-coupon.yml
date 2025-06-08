@@ -42,7 +42,7 @@ jobs:
           # 1. 格式化訊息文字 (Format the message text)
           #    使用與之前相同的 sed 邏輯來建立純文字訊息
           #    (Use the same sed logic as before to create the plain text message)
-          message_text=$(echo "$UNIQUE_DATA")
+          message_text=$(echo "$UNIQUE_DATA" | sed 's/__NEWLINE__/\\n/g')
           echo "Message: $message_text"
           # 檢查格式化後的訊息是否為空 (Optional check if formatted message is empty)
           if [ -z "$message_text" ]; then
@@ -53,7 +53,6 @@ jobs:
           # 2. 準備 JSON Payload (Prepare JSON Payload)
           #    使用 shell 變數建構 JSON 字串
           #    注意變數的引用方式以確保正確解析
-          echo "Sending message: $message_text"
           echo "text": "'"${message_text}"'"
           json_payload='{
             "to": "'"${LINE_TARGET_ID}"'",
