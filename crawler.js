@@ -115,7 +115,7 @@ axios.get('https://swq.jp/_special/rest/Sw/Coupon')
         const outputLinkArray = uniqueData.map((x) => {
           const link = `http://withhive.me/313/${x.Label}`;
           const items = x.Resource.map((item) => `${itemArray[item.Code] ?? item.Code}x${item.Quantity}`);
-          return `${link}：${items.join('\n')}`;
+          return `${link}\n${items.join('、')}`;
         });
 
         console.log('UNIQUE_DATA:' + outputLinkArray.join('\n\n'))
