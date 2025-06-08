@@ -1,4 +1,4 @@
-name: Deploy to LINE Notify and Update Record
+name: Deploy to LINE Message API and Update Record
 
 on:
   schedule:
