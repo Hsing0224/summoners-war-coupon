@@ -60,7 +60,7 @@ jobs:
             "messages": [
               {
                 "type": "text",
-                "text": ${message_text}
+                "text": "http://withhive.me/313/sw2025juny5c\n水屬性召喚書x30\n\nhttp://withhive.me/313/again11tyu\n神秘召喚書x5\n\nhttp://withhive.me/313/ty4sw11th\n能量x300、魔力石x2000000、神秘召喚書x5、runex500\n\nhttp://withhive.me/313/sw11yabdaygift\n魔力石x5000000、神秘召喚書x30"
               }
             ]
           }'
