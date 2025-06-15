@@ -1,14 +1,10 @@
 [
   {
-    "Label": "qidaixiasaiji",
+    "Label": "sw2025juny5c",
     "Resource": [
       {
-        "Quantity": "100000",
-        "Code": "mana"
-      },
-      {
-        "Quantity": "1",
-        "Code": "scroll_mystical"
+        "Quantity": "30",
+        "Code": "scroll_water"
       }
     ]
   }
