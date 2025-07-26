@@ -1,10 +1,18 @@
 [
   {
-    "Label": "sw2025jul9ua",
+    "Label": "swc25seaultyeet",
     "Resource": [
       {
-        "Quantity": "3",
+        "Quantity": "100",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "1",
         "Code": "scroll_mystical"
+      },
+      {
+        "Quantity": "100",
+        "Code": "rune"
       }
     ]
   }
