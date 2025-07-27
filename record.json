@@ -1,17 +1,17 @@
 [
   {
-    "Label": "swc25seaultyeet",
+    "Label": "cuinapac18oct",
     "Resource": [
       {
-        "Quantity": "100",
-        "Code": "energy"
+        "Quantity": "1",
+        "Code": "summon_exclusive"
       },
       {
         "Quantity": "1",
         "Code": "scroll_mystical"
       },
       {
-        "Quantity": "100",
+        "Quantity": "15",
         "Code": "rune"
       }
     ]
