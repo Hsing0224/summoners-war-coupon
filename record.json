@@ -1,18 +1,14 @@
 [
   {
-    "Label": "cuinapac18oct",
+    "Label": "ardcelite29q",
     "Resource": [
       {
-        "Quantity": "1",
-        "Code": "summon_exclusive"
+        "Quantity": "100",
+        "Code": "energy"
       },
       {
-        "Quantity": "1",
-        "Code": "scroll_mystical"
-      },
-      {
-        "Quantity": "15",
-        "Code": "rune"
+        "Quantity": "100000",
+        "Code": "mana"
       }
     ]
   }
