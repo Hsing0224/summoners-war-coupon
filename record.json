@@ -1,14 +1,14 @@
 [
   {
-    "Label": "ardcelite29q",
+    "Label": "swcbusan25gmg",
     "Resource": [
       {
         "Quantity": "100",
         "Code": "energy"
       },
       {
-        "Quantity": "100000",
-        "Code": "mana"
+        "Quantity": "1",
+        "Code": "scroll_mystical"
       }
     ]
   }
