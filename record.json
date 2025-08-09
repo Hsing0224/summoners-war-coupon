@@ -1,10 +1,14 @@
 [
   {
-    "Label": "4ticketsleft2br",
+    "Label": "haiyou4geweizhi",
     "Resource": [
       {
-        "Quantity": "5",
-        "Code": "rune"
+        "Quantity": "100",
+        "Code": "energy"
+      },
+      {
+        "Quantity": "500000",
+        "Code": "mana"
       }
     ]
   }
