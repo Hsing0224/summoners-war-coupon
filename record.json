@@ -1,14 +1,14 @@
 [
   {
-    "Label": "haiyou4geweizhi",
+    "Label": "zaihangzhoujian",
     "Resource": [
       {
-        "Quantity": "100",
+        "Quantity": "2",
         "Code": "energy"
       },
       {
-        "Quantity": "500000",
-        "Code": "mana"
+        "Quantity": "2",
+        "Code": "scroll_mystical"
       }
     ]
   }
